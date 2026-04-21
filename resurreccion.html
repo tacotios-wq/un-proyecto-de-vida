@@ -844,6 +844,23 @@ footer {
     line-height: 1.55;
 }
 
+.curtain__img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    object-fit: cover;
+}
+
+.curtain__img-caption {
+    margin-top: 0.85rem;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
 /* ══════════════════════════════════════════
    ACCESSIBILITY
    ══════════════════════════════════════════ */
@@ -1068,10 +1085,8 @@ footer {
                 <p class="curtain__body">Algunos les llaman <em>reels</em> o <em>videos de YouTube</em>. Yo les digo <em>cápsulas del tiempo</em> que van a trascender fronteras y generaciones.</p>
                 <p class="curtain__body">Para preservar el patrimonio de <em>la primera gastronomía en ser declarada Patrimonio de la Humanidad.</em></p>
                 <figure class="curtain__figure">
-                    <div class="curtain__img-placeholder">
-                        <span class="curtain__placeholder-label">Pendiente · Render nanobanana + equipo</span>
-                        <span class="curtain__placeholder-detail">Un abuelo viendo en la televisión videos de @tacotios. En la pantalla: Aniol con la playera de México abrazando a una doña en una taquería.</span>
-                    </div>
+                    <img class="curtain__img" src="abuelo-nieto-tv.png" alt="Un abuelo y su nieto viendo en la televisión un video de @tacotios abrazando a una doña en una taquería" loading="lazy">
+                    <figcaption class="curtain__img-caption">Una cápsula del tiempo · Un abuelo y su nieto viendo @tacotios</figcaption>
                 </figure>
             </div>
         </div>
