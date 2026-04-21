@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La tesis de una vida dedicada a descifrar qué nos hace elegir cuando comemos. Aniol Guell · @tacotios.">
+<meta property="og:title" content="La Tesis — No existe un mejor, existe un favorito">
+<meta property="og:description" content="La tesis de una vida dedicada a descifrar qué nos hace elegir cuando comemos.">
+<meta property="og:type" content="website">
+<title>La Tesis — No existe un mejor, existe un favorito</title>
+
+<style>
+/* ══════════════════════════════════════════
+   TOKENS — Apple minimal
+   ══════════════════════════════════════════ */
+:root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --text: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-tertiary: #86868b;
+    --line: rgba(0, 0, 0, 0.08);
+    --link: #06c;
+
+    --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ══════════════════════════════════════════
+   RESET
+   ══════════════════════════════════════════ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--text);
+    color: var(--bg);
+}
+
+/* ══════════════════════════════════════════
+   LAYOUT
+   ══════════════════════════════════════════ */
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+section {
+    padding: clamp(7rem, 18vh, 14rem) 0;
+}
+
+/* ══════════════════════════════════════════
+   TYPOGRAPHY
+   ══════════════════════════════════════════ */
+.hero-title {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 16ch;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    overflow-wrap: break-word;
+}
+
+.section-subtitle {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+}
+
+.body-text {
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 54ch;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.number-xl {
+    font-size: clamp(5rem, 14vw, 11rem);
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+}
+
+.number-large {
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.number-medium {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.quote {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* ══════════════════════════════════════════
+   REVEAL
+   ══════════════════════════════════════════ */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms var(--ease-out),
+                transform 700ms var(--ease-out);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 0;
+}
+
+@media (max-width: 680px) {
+    .hero {
+        min-height: auto;
+        padding: clamp(6rem, 14vh, 10rem) 0 clamp(4rem, 8vh, 6rem);
+    }
+}
+
+.hero__label {
+    margin-bottom: 2rem;
+}
+
+.hero__title {
+    margin-bottom: 2.5rem;
+}
+
+.hero__sub {
+    max-width: 44ch;
+}
+
+/* ══════════════════════════════════════════
+   DIVIDER
+   ══════════════════════════════════════════ */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+}
+
+/* ══════════════════════════════════════════
+   BRIDGE — Zeigarnik tension between sections
+   ══════════════════════════════════════════ */
+.bridge {
+    padding: clamp(2rem, 4vh, 3rem) 0;
+    text-align: center;
+}
+
+.bridge__text {
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    font-weight: 400;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* ══════════════════════════════════════════
+   COUNTER SECTION
+   ══════════════════════════════════════════ */
+.counter-section {
+    text-align: center;
+    padding: clamp(6rem, 16vh, 12rem) 0;
+}
+
+.counter-section .label {
+    margin-bottom: 1rem;
+}
+
+.counter-section .body-text {
+    margin: 0 auto;
+    max-width: 38ch;
+    text-align: center;
+}
+
+/* ══════════════════════════════════════════
+   FULL-WIDTH ACCENT (pattern break)
+   ══════════════════════════════════════════ */
+.section--alt {
+    background: var(--bg-alt);
+}
+
+/* ══════════════════════════════════════════
+   TWO COLUMN
+   ══════════════════════════════════════════ */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+}
+
+@media (max-width: 680px) {
+    .two-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ══════════════════════════════════════════
+   STEPS
+   ══════════════════════════════════════════ */
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4rem, 8vh, 7rem);
+}
+
+.step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    align-items: baseline;
+}
+
+.step__number {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text-tertiary);
+    line-height: 1;
+}
+
+.step__title {
+    font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.75rem;
+}
+
+.step__role {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 1rem;
+}
+
+.step__desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 52ch;
+}
+
+.step__desc + .step__desc {
+    margin-top: 0.9rem;
+}
+
+.step__stat {
+    margin-top: 1.5rem;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+@media (max-width: 680px) {
+    .step {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* ══════════════════════════════════════════
+   CANON (3-col grid for canónicos)
+   ══════════════════════════════════════════ */
+.canon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+}
+
+.canon-cell {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2vw, 2rem);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.canon-cell:last-child {
+    border-right: none;
+}
+
+.canon-cell .label {
+    margin-bottom: 1rem;
+}
+
+.canon-cell__text {
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+.canon-cell__text em {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 680px) {
+    .canon-grid {
+        grid-template-columns: 1fr;
+    }
+    .canon-cell {
+        border-right: none;
+    }
+}
+
+/* ══════════════════════════════════════════
+   FINALE
+   ══════════════════════════════════════════ */
+.finale {
+    text-align: center;
+    padding: clamp(8rem, 18vh, 14rem) 0;
+}
+
+.finale__cta {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.75rem;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.finale__sub {
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem;
+    line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════ */
+footer {
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    border-top: 1px solid var(--line);
+}
+
+/* ══════════════════════════════════════════
+   PHOTO MOMENT — full-width pattern break
+   ══════════════════════════════════════════ */
+.photo-moment {
+    width: 100%;
+    height: clamp(360px, 58vh, 620px);
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-alt);
+}
+
+.photo-moment__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    filter: grayscale(0.08);
+}
+
+.photo-moment__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem clamp(1.5rem, 5vw, 3rem);
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.88);
+}
+
+/* ══════════════════════════════════════════
+   RAIZ — portrait photo
+   ══════════════════════════════════════════ */
+.raiz-photo {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 2px;
+    filter: grayscale(0.05);
+    margin-bottom: 2rem;
+    box-shadow: 0 14px 50px rgba(0,0,0,0.12);
+}
+
+.raiz-photo__caption {
+    margin-top: 0.75rem;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+/* ══════════════════════════════════════════
+   RECIPE DOCUMENT — manuscript inline
+   ══════════════════════════════════════════ */
+.recipe-doc {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 2px;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 14px 50px rgba(0,0,0,0.12);
+    filter: grayscale(0.04);
+}
+
+.recipe-doc__caption {
+    margin-top: 0.75rem;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    max-width: 420px;
+}
+
+/* ══════════════════════════════════════════
+   DATA ROW — métricas (calcado del live)
+   ══════════════════════════════════════════ */
+.data-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+}
+
+.data-cell {
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.5rem);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.data-cell:last-child { border-right: none; }
+
+.data-cell .label { margin-bottom: 0.5rem; }
+
+@media (max-width: 680px) {
+    .data-row { grid-template-columns: 1fr 1fr; }
+    .data-cell:nth-child(2) { border-right: none; }
+}
+
+/* ══════════════════════════════════════════
+   STORY FEATURED + COMPACT (calcado del live)
+   ══════════════════════════════════════════ */
+.story-featured {
+    padding: clamp(2rem, 4vw, 3rem);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-bottom: clamp(2rem, 4vh, 3rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.story-featured__number {
+    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: rgba(0, 0, 0, 0.06);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.story-featured__name {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.story-featured__location {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 1.25rem;
+}
+
+.story-featured__text {
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 56ch;
+}
+
+.story-featured__stat {
+    margin-top: 1.5rem;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.story-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.story-compact {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+}
+
+.story-compact__number {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+}
+
+.story-compact__name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.story-compact__detail {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════
+   TIMELINE (calcado del live)
+   ══════════════════════════════════════════ */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+}
+
+.timeline-item__date {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+}
+
+.timeline-item__text {
+    font-size: 1rem;
+    color: var(--text);
+    font-weight: 400;
+}
+
+@media (max-width: 680px) {
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}
+
+/* ══════════════════════════════════════════
+   BRANDS PANEL HEADER
+   ══════════════════════════════════════════ */
+.brands-panel__block {
+    margin-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+.brands-panel__block:last-child { margin-bottom: 0; }
+
+.brands-panel__title {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    max-width: 22ch;
+}
+
+.brands-panel__intro {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 56ch;
+    margin-bottom: 2rem;
+}
+
+.counter-mini {
+    text-align: center;
+    padding: clamp(2.5rem, 5vh, 4rem) 0;
+    background: var(--bg-alt);
+    border-radius: 4px;
+    margin-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+.counter-mini .number-xl {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    margin: 1rem 0;
+}
+
+/* ══════════════════════════════════════════
+   CURTAIN — persiana "¿Y saben qué?"
+   ══════════════════════════════════════════ */
+.curtain-section {
+    padding: clamp(4rem, 10vh, 8rem) 0 clamp(8rem, 18vh, 14rem);
+    border-top: 1px solid var(--line);
+}
+
+.curtain {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+.curtain__trigger {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2rem 0;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    border-bottom: 1px solid var(--line);
+    transition: border-color 300ms var(--ease), padding 400ms var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.curtain__trigger::-webkit-details-marker { display: none; }
+.curtain__trigger::marker { display: none; }
+
+.curtain__trigger:hover {
+    border-bottom-color: var(--text);
+}
+
+.curtain__indicator {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--text-tertiary);
+    transition: transform 500ms var(--ease-out), color 300ms var(--ease);
+    flex-shrink: 0;
+    margin-left: 1rem;
+    display: inline-block;
+    transform-origin: center;
+}
+
+.curtain[open] .curtain__indicator {
+    transform: rotate(45deg);
+    color: var(--text);
+}
+
+.curtain__panel {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 800ms var(--ease-out),
+                opacity 600ms var(--ease-out);
+}
+
+.curtain[open] .curtain__panel {
+    max-height: 3400px;
+    opacity: 1;
+}
+
+.curtain__content {
+    padding: clamp(2.5rem, 5vh, 4rem) 0 0;
+}
+
+.curtain__lead {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 2rem;
+    max-width: 22ch;
+}
+
+.curtain__body {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    max-width: 56ch;
+}
+
+.curtain__body em {
+    font-style: italic;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.curtain__figure {
+    margin-top: clamp(2.5rem, 5vh, 4rem);
+    margin-bottom: 0;
+}
+
+.curtain__img-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--bg-alt);
+    border: 1px dashed rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.curtain__placeholder-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.curtain__placeholder-detail {
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 54ch;
+    line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════
+   ACCESSIBILITY
+   ══════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .curtain__panel,
+    .curtain__indicator {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════ 1. HERO ═══════════════ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero__content">
+            <p class="label hero__label reveal">Un proyecto de vida — Aniol Guell · @tacotios</p>
+            <h1 class="hero-title hero__title reveal">No existe un mejor. Existe un favorito.</h1>
+            <p class="body-text hero__sub reveal">Me di cuenta del vacío de la palabra <em>mejor</em>. Se confunde con <em>favorito</em>. Y la diferencia es abismal.</p>
+            <p class="reveal" style="margin-top: 3rem; font-size: 14px; font-style: italic; color: var(--text-tertiary); max-width: 44ch;">El proyecto de una vida dedicada a descifrar qué nos hace elegir cuando comemos.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ BRIDGE ═══════════════ -->
+<div class="bridge reveal"><p class="bridge__text">¿Cómo empezó?</p></div>
+<div class="divider"></div>
+
+<!-- ═══════════════ 2. LA RAÍZ ═══════════════ -->
+<section>
+    <div class="container">
+        <div class="two-col">
+            <div>
+                <img class="raiz-photo reveal" src="abuela-1950.png" alt="Retrato de la abuela de Aniol — 1950" loading="lazy">
+                <p class="label reveal" style="margin-bottom: 2rem; margin-top: 2.5rem;">El origen</p>
+                <p class="quote reveal">"Era la que consiguió que mi mayor placer en esta vida fuera comer."</p>
+            </div>
+            <div>
+                <p class="body-text reveal">@tacotios no lo empecé yo. Lo empezó mi abuela.</p>
+                <p class="body-text reveal" style="margin-top: 1rem;">Era la que me cocinaba cuando yo era chiquito.</p>
+                <p class="body-text reveal" style="margin-top: 1rem;">Antes de que muriera, escribí a mano sus recetas. Mi madre las conservó. Me las envió por WhatsApp.</p>
+                <p class="body-text reveal" style="margin-top: 1rem; color: var(--text); font-weight: 500;">Hoy esas recetas viajan por diez restaurantes de la Ciudad de México — una en cada mesa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ PHOTO MOMENT — la mecánica del sello ═══════════════ -->
+<div class="photo-moment reveal">
+    <img class="photo-moment__img" src="mesa-trujal.jpg" alt="La mesa en El Trujal: retrato de la abuela enmarcado con la receta manuscrita de calamares, al lado un cucurucho con la tapa servida por el restaurante" loading="lazy" style="object-position: center 40%;">
+    <div class="photo-moment__caption">El Trujal · Polanco · "Calamares de la abuela"</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ BRIDGE ═══════════════ -->
+<div class="bridge reveal"><p class="bridge__text">Las 3 etapas del proyecto.</p></div>
+<div class="divider"></div>
+
+<!-- ═══════════════ 3. LA OBRA (3 PILARES) ═══════════════ -->
+<section>
+    <div class="container">
+        <p class="label reveal" style="margin-bottom: 2rem;">Temporada 1: La obra</p>
+        <h2 class="section-title reveal" style="margin-bottom: clamp(4rem, 8vh, 6rem); max-width: 22ch;">Qué nos hace elegir cuando comemos.</h2>
+
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step__number">I</div>
+                <div>
+                    <p class="step__title">Pasaporte Español</p>
+                    <p class="step__role">Donde se siembra la tesis</p>
+                    <p class="step__desc">Diez restaurantes españoles en la Ciudad de México. Cada uno representa una región — Cataluña, Madrid, País Vasco, Mallorca, Canarias, Andalucía, Asturias.</p>
+                    <p class="step__desc">En cada mesa, el comensal prueba el plato característico de la casa. Y al final cada restaurante le regala como sello <em>una receta distinta de mi abuela</em> — una de las que escribí a mano antes de que se fuera. Diez restaurantes, diez recetas. El tributo que nos hace viajar.</p>
+                    <p class="step__desc">En su segunda etapa, el pasaporte deja de ser pasaporte. Se convierte en una app interactiva gamificada — con avatar, mapa y un algoritmo que aprende lo que te gusta para llevarte a tu favorito. Lo físico se vuelve juego. El juego se vuelve hábito.</p>
+                    <p class="step__stat">En producción · 3 episodios grabados</p>
+                </div>
+            </div>
+
+            <div class="step reveal">
+                <div class="step__number">II</div>
+                <div>
+                    <p class="step__title">La Selección del Taco</p>
+                    <p class="step__role">Donde la tesis se confronta</p>
+                    <p class="step__desc">Tres ciudades — Ciudad de México, Guadalajara, Monterrey. Dieciséis taquerías. Octavos, cuartos, semifinales, final. Mientras el mundo se prepara para el Mundial 2026, nosotros organizamos <em>la otra selección</em>.</p>
+                    <p class="step__desc">Cada combate tiene dos veredictos: el del pueblo — que vota con su boca y su memoria — y el del jurado — que evalúa técnica, origen, sabor y concepto. Ese desacuerdo es parte del experimento.</p>
+                    <p class="step__desc">La moraleja del torneo es la tesis hecha evidencia: lo mejor es único e intransferible. Unipersonal. Tuyo. Viene atado a tu emoción, tus vivencias, tu memoria, tus raíces.</p>
+                    <p class="step__stat">En preparación · Ventana Mundial 2026</p>
+                </div>
+            </div>
+
+            <div class="step reveal">
+                <div class="step__number">III</div>
+                <div>
+                    <p class="step__title">La Vuelta a México en 80 Tacos</p>
+                    <p class="step__role">El proyecto de una vida</p>
+                    <p class="step__desc">Una tarde, en la terraza, entendí algo sobre mis casi cuatro años en México. Lo que más se queda en el recuerdo es lo que más te emociona. Y lo que más te emociona es lo que más conecta contigo.</p>
+                    <p class="step__desc">Cuatro años viajando como local, con una mochila, por los lugares más recónditos de México — buscando la <em>"mejor"</em> comida, entre comillas, porque cuando te metes de verdad entiendes que no existe. He guardado en esa mochila aprendizajes que no están en los libros. Los que solo saben las personas que viven de una forma pura y auténtica.</p>
+                    <p class="step__desc">El maíz es el vehículo. La comida es mi forma favorita de contar una historia. Ochenta tacos por el país entero, para enseñarle a México — y al mundo — por qué le dicen <em>México mágico</em>. Este es el camino hacia La Vuelta al Mundo en 80 Comidas.</p>
+                    <p class="step__stat">En ruta · Casi 4 años de recorrido</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ BRIDGE ═══════════════ -->
+<div class="bridge reveal"><p class="bridge__text">Y tres cosas que no se tocan.</p></div>
+<div class="divider"></div>
+
+<!-- ═══════════════ 4. LOS CANÓNICOS ═══════════════ -->
+<section class="section--alt">
+    <div class="container">
+        <p class="label reveal" style="margin-bottom: 2rem;">La brújula</p>
+        <h2 class="section-title reveal" style="margin-bottom: clamp(4rem, 8vh, 6rem);">La esencia que guía el propósito.</h2>
+
+        <div class="canon-grid reveal">
+            <div class="canon-cell">
+                <p class="label">Canon 01 — Tesis</p>
+                <p class="canon-cell__text">No existe un mejor.<br>Existe un favorito.</p>
+            </div>
+            <div class="canon-cell">
+                <p class="label">Canon 02 — Misión</p>
+                <p class="canon-cell__text">Descifrar qué nos hace elegir cuando comemos. <em>Qué nos hace disfrutar más.</em></p>
+            </div>
+            <div class="canon-cell">
+                <p class="label">Canon 03 — Mecánica</p>
+                <p class="canon-cell__text">Diez restaurantes. Diez recetas de mi abuela — una en cada mesa. <em>El tributo que nos hace viajar.</em></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 5. EL NORTE ═══════════════ -->
+<section class="finale">
+    <div class="container">
+        <p class="label reveal" style="margin-bottom: 2rem;">El norte</p>
+        <h2 class="finale__cta reveal">¿Qué le contaré yo a mis nietos cuando muera?</h2>
+        <p class="finale__sub reveal">Probablemente no sean los restaurantes con estrellas. Serán las doñas y los taqueros que me enseñaron que la comida es un regalo. Que cocinar es una forma de contar una historia. Que comer es, después de abrazar a tu abuelita, el mayor placer de esta vida.</p>
+    </div>
+</section>
+
+<!-- ═══════════════ CURTAIN 1 — "¿Y saben qué?" ═══════════════ -->
+<section class="curtain-section">
+    <details class="curtain reveal">
+        <summary class="curtain__trigger">
+            <span>¿Y saben qué?</span>
+            <span class="curtain__indicator">+</span>
+        </summary>
+        <div class="curtain__panel">
+            <div class="curtain__content">
+                <p class="curtain__lead">No se las voy a contar.<br>Se las voy a mostrar.</p>
+                <p class="curtain__body">Algunos les llaman <em>reels</em> o <em>videos de YouTube</em>. Yo les digo <em>cápsulas del tiempo</em> que van a trascender fronteras y generaciones.</p>
+                <p class="curtain__body">Para preservar el patrimonio de <em>la primera gastronomía en ser declarada Patrimonio de la Humanidad.</em></p>
+                <figure class="curtain__figure">
+                    <div class="curtain__img-placeholder">
+                        <span class="curtain__placeholder-label">Pendiente · Render nanobanana + equipo</span>
+                        <span class="curtain__placeholder-detail">Un abuelo viendo en la televisión videos de @tacotios. En la pantalla: Aniol con la playera de México abrazando a una doña en una taquería.</span>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </details>
+</section>
+
+<!-- ═══════════════ CURTAIN 2 — "¿Y lo que piden las marcas?" ═══════════════ -->
+<section class="curtain-section" style="padding-top: 0;">
+    <details class="curtain reveal">
+        <summary class="curtain__trigger">
+            <span>¿Y lo que piden las marcas?</span>
+            <span class="curtain__indicator">+</span>
+        </summary>
+        <div class="curtain__panel">
+            <div class="curtain__content">
+
+                <!-- BLOQUE 1 — Counter principal -->
+                <div class="brands-panel__block">
+                    <div class="counter-mini">
+                        <p class="label">En tres años</p>
+                        <div class="number-xl" data-counter="2100000" data-format="commas" style="margin: 1rem 0;">0</div>
+                        <p class="label">personas que se quedaron</p>
+                        <p class="body-text" style="margin: 1.5rem auto 0; max-width: 38ch;">Sin plan. Sin guion. Sin más estrategia que la honestidad. A un ritmo de 500 personas al día.</p>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 2 — Las dos monedas -->
+                <div class="brands-panel__block">
+                    <p class="label" style="margin-bottom: 1.25rem;">Lo que descubrimos</p>
+                    <h3 class="brands-panel__title">Hay dos cosas más valiosas que el dinero.</h3>
+                    <div class="two-col" style="gap: clamp(2rem, 4vw, 4rem);">
+                        <div>
+                            <p class="section-subtitle" style="margin-bottom: 1rem;">Asociación</p>
+                            <p class="body-text">Cuando conoces la historia detrás del plato, sabe más. La emoción se convierte en recuerdo que dura décadas. Si te murieras mañana, no pedirías el mejor wagyu. Pedirías el caldito que te hacía tu mamá los domingos.</p>
+                        </div>
+                        <div>
+                            <p class="section-subtitle" style="margin-bottom: 1rem;">Atención</p>
+                            <p class="body-text">La moneda más cara del siglo. 2 millones de personas nos dan la suya cada día sin saltarse ni uno. Más de lo que alcanza el noticiero de mayor audiencia del país en un día.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3 — La audiencia -->
+                <div class="brands-panel__block">
+                    <p class="label" style="margin-bottom: 1.25rem;">La audiencia</p>
+                    <h3 class="brands-panel__title">No es una cuenta. Es una comunidad.</h3>
+
+                    <div class="data-row">
+                        <div class="data-cell">
+                            <p class="label">Instagram</p>
+                            <p class="number-medium" data-counter="720000" data-format="commas">0</p>
+                        </div>
+                        <div class="data-cell">
+                            <p class="label">Facebook</p>
+                            <p class="number-medium" data-counter="670000" data-format="commas">0</p>
+                        </div>
+                        <div class="data-cell">
+                            <p class="label">TikTok</p>
+                            <p class="number-medium" data-counter="620000" data-format="commas">0</p>
+                        </div>
+                        <div class="data-cell">
+                            <p class="label">YouTube</p>
+                            <p class="number-medium" data-counter="90000" data-format="commas">0</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 2rem; font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em;">Total: <span data-counter="2100000" data-format="commas">0</span></p>
+
+                    <div class="data-row" style="margin-top: 2rem;">
+                        <div class="data-cell" style="grid-column: span 2; text-align: center;">
+                            <p class="label">Engagement Rate Reels</p>
+                            <p class="number-medium" style="color: var(--text);">10.7%</p>
+                            <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 0.5rem;">5× el estándar del sector</p>
+                        </div>
+                        <div class="data-cell" style="grid-column: span 2; text-align: center;">
+                            <p class="label">Views promedio por post</p>
+                            <p class="number-medium" data-counter="288791" data-format="commas">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 4 — Historias documentadas -->
+                <div class="brands-panel__block">
+                    <p class="label" style="margin-bottom: 1.25rem;">48 guiones filmados</p>
+                    <h3 class="brands-panel__title">Las historias no son teoría. Están grabadas.</h3>
+
+                    <div class="story-featured">
+                        <div class="story-featured__number">01</div>
+                        <h4 class="story-featured__name">Araceli</h4>
+                        <p class="story-featured__location">Mercado Zaragoza · Puebla</p>
+                        <p class="story-featured__text">Huele a maíz recién molido y a manteca caliente a las tres de la mañana. Araceli se levanta a esa hora cada día a moler el maíz en el molino. Un machete cuesta 90 pesos. Ella no sabe cuánto gana. Trabaja todos los días del año menos el 25 de cada mes. Y cuando alguien le dice "gracias" con la mirada, ese instante vale más que cualquier estrella Michelin.</p>
+                        <p class="story-featured__stat">1 millón+ de views · El video más compartido del canal</p>
+                    </div>
+
+                    <div class="story-list">
+                        <div class="story-compact">
+                            <span class="story-compact__number">02</span>
+                            <div>
+                                <p class="story-compact__name">Los Kumiai · Valle de Guadalupe</p>
+                                <p class="story-compact__detail">Quedan dos personas en el planeta que hablan su lengua. Cocinan sobre piedra volcánica con ingredientes que no tienen nombre en español.</p>
+                            </div>
+                        </div>
+                        <div class="story-compact">
+                            <span class="story-compact__number">03</span>
+                            <div>
+                                <p class="story-compact__name">Doña Esthela · Valle de Guadalupe</p>
+                                <p class="story-compact__detail">Lavaba ropa ajena. Hoy tiene un Bib Gourmand. Su carne asada huele a leña y a madrugada en el desierto.</p>
+                            </div>
+                        </div>
+                        <div class="story-compact">
+                            <span class="story-compact__number">04</span>
+                            <div>
+                                <p class="story-compact__name">Doña Humo · Sonora</p>
+                                <p class="story-compact__detail">Madre soltera. Burritos de machaca que saben a desierto y a resistencia. El contenido más memorable del archivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 5 — La ventana -->
+                <div class="brands-panel__block">
+                    <div class="counter-mini">
+                        <p class="label">La ventana</p>
+                        <div class="number-xl" data-counter="64" data-format="plain" style="margin: 1rem 0;">0</div>
+                        <p class="label">días</p>
+                        <p class="body-text" style="margin: 1.5rem auto 0; max-width: 44ch;">La gran final de La Selección del Taco coincide con el pitido inicial del Mundial FIFA 2026 en México. 11 de junio.</p>
+                        <p class="body-text" style="margin: 1rem auto 0; max-width: 44ch; color: var(--text); font-weight: 500;">La próxima vez que el mundo entero mire a México así no está en el calendario.</p>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 6 — El equipo -->
+                <div class="brands-panel__block">
+                    <p class="label" style="margin-bottom: 1.25rem;">El equipo</p>
+                    <h3 class="brands-panel__title">"Llevo 60 documentales y nunca vi a alguien que hiciera esto con comida."</h3>
+                    <p class="brands-panel__intro">El productor ganador de Emmy vio tres reels. Llamó al día siguiente. No le pagamos por decirlo. Nos pidió entrar.</p>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Dirección</span>
+                            <span class="timeline-item__text">Aniol Güell — @tacotios · 2M+ seguidores</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Estrategia</span>
+                            <span class="timeline-item__text">Héctor Mijangos — dirección estratégica</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Management</span>
+                            <span class="timeline-item__text">PAOCME Agencia — gestión de marca y brand deals</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Producción</span>
+                            <span class="timeline-item__text">Productor ganador de Emmy · 60+ documentales · productor Tijuana</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Grabación</span>
+                            <span class="timeline-item__text">2 camarógrafos, sonido, iluminación · formato horizontal</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Postproducción</span>
+                            <span class="timeline-item__text">2 editores · asistente de producción</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Tecnología</span>
+                            <span class="timeline-item__text">Desarrolladores IA — algoritmo de recomendación gastronómica</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Autoridad</span>
+                            <span class="timeline-item__text">Gloria López Morales — la mujer que consiguió el Patrimonio UNESCO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 7 — Calendario -->
+                <div class="brands-panel__block">
+                    <p class="label" style="margin-bottom: 1.25rem;">Calendario</p>
+                    <h3 class="brands-panel__title">Todo está en marcha.</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Abril 14</span>
+                            <span class="timeline-item__text">Grabación Guía Española — primeros episodios</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Mayo 1</span>
+                            <span class="timeline-item__text">Empieza grabación La Selección del Taco</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date">Mayo 15</span>
+                            <span class="timeline-item__text">Primer episodio al aire</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-item__date" style="color: var(--text); font-weight: 600;">Junio 11</span>
+                            <span class="timeline-item__text" style="font-weight: 600;">Gran final — coincide con el pitido inicial del Mundial FIFA 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cierre del panel -->
+                <p class="body-text" style="margin-top: clamp(3rem, 6vh, 5rem); text-align: center; font-style: italic; max-width: 48ch; margin-left: auto; margin-right: auto;">Si ya resuena: <a href="mailto:tacotios@gmail.com?subject=La%20Tesis%20%E2%80%94%20Hablemos" style="color: var(--link); text-decoration: none;">hablemos →</a></p>
+
+            </div>
+        </div>
+    </details>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+    <div class="container">
+        <p>Aniol Guell · @tacotios · CDMX · Una tesis — 2026</p>
+    </div>
+</footer>
+
+<!-- ═══════════════ JS ═══════════════ -->
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounter(el) {
+    const target = parseInt(el.dataset.counter);
+    const format = el.dataset.format;
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const current = Math.round(target * eased);
+
+        if (format === 'commas') {
+            el.textContent = current.toLocaleString('es-MX');
+        } else {
+            el.textContent = current;
+        }
+
+        if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+}
+
+// Counters outside any <details> — observe normally
+document.querySelectorAll('[data-counter]').forEach(el => {
+    if (el.closest('details')) return;
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !el.dataset.animated) {
+                el.dataset.animated = '1';
+                animateCounter(el);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counterObserver.observe(el);
+});
+
+// Counters inside <details> — trigger on open
+document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+        if (d.open) {
+            d.querySelectorAll('[data-counter]').forEach(el => {
+                if (!el.dataset.animated) {
+                    el.dataset.animated = '1';
+                    animateCounter(el);
+                }
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
